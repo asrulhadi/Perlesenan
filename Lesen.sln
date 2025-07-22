@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesen", "Lesen\Lesen.csproj", "{C369EF74-0A2B-42C1-8E63-5ABF7E2185E2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeviceId", "DeviceId", "{C456E24C-0918-4E5F-912C-8CFB00FF30C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C5273D4C-D57F-41E4-9EF8-FE1B4D373A60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceId", "DeviceId\src\DeviceId\DeviceId.csproj", "{13733293-A0B4-452B-B153-94CC44018474}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,13 @@ Global
 		{C369EF74-0A2B-42C1-8E63-5ABF7E2185E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C369EF74-0A2B-42C1-8E63-5ABF7E2185E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C369EF74-0A2B-42C1-8E63-5ABF7E2185E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13733293-A0B4-452B-B153-94CC44018474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13733293-A0B4-452B-B153-94CC44018474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13733293-A0B4-452B-B153-94CC44018474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13733293-A0B4-452B-B153-94CC44018474}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5273D4C-D57F-41E4-9EF8-FE1B4D373A60} = {C456E24C-0918-4E5F-912C-8CFB00FF30C2}
+		{13733293-A0B4-452B-B153-94CC44018474} = {C5273D4C-D57F-41E4-9EF8-FE1B4D373A60}
 	EndGlobalSection
 EndGlobal
