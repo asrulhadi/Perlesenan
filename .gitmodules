@@ -1,0 +1,6 @@
+[submodule "Standard.Licensing"]
+	path = Standard.Licensing
+	url = https://github.com/junian/Standard.Licensing.git
+[submodule "DeviceId"]
+	path = DeviceId
+	url = https://github.com/MatthewKing/DeviceId.git
