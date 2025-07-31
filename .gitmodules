@@ -4,3 +4,6 @@
 [submodule "DeviceId"]
 	path = DeviceId
 	url = https://github.com/MatthewKing/DeviceId.git
+[submodule "obfuscar"]
+	path = obfuscar
+	url = https://github.com/obfuscar/obfuscar.git
