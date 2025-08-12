@@ -10,6 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Standard.Licensing\src\Standard.Licensing\Standard.Licensing.csproj" />
     <ProjectReference Include="..\DeviceId\src\DeviceId\DeviceId.csproj" />
+    <ProjectReference Include="..\DeviceId\src\DeviceId.Windows.WmiLight\DeviceId.Windows.WmiLight.csproj" />
+    <ProjectReference Include="..\DeviceId\src\DeviceId.Linux\DeviceId.Linux.csproj" />
   </ItemGroup>
 
 </Project>
