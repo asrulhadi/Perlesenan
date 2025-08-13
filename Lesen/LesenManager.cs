@@ -3,6 +3,7 @@ using DeviceId.Encoders;
 using DeviceId.Formatters;
 using Standard.Licensing;
 using System;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 namespace Teknomatrik.Lesen;
@@ -10,8 +11,8 @@ namespace Teknomatrik.Lesen;
 public class LesenManager
 {
     public Guid Guid { get; set; }
-    public string PrivateKey { get; set; }
-    public string PublicKey { get; set; }
+    public string PrivateKey { get; set; } = "";
+    public string PublicKey { get; set; } = "";
 
     private static readonly LesenManager _instance = new LesenManager();
     public static LesenManager Instance => _instance;
@@ -53,7 +54,7 @@ public class LesenManager
                 })
             .LicensedTo("John Doe", "john.doe@example.com")
             .CreateAndSignWithPrivateKey(PrivateKey, passPhrase);
-    
+
     public static License CreateLicense(Guid guid)
         => LesenManager.Instance.CreateLicense(guid, "Ini lesen yang ku mahu");
 
@@ -64,15 +65,20 @@ public class LesenManager
         DeviceIdBuilder deviceIdBuilder = new DeviceIdBuilder()
             .AddMachineName()
             .AddOsVersion()
-            //.AddMacAddress()
+            #if Windows
             .OnWindows(windows => windows
                 .AddProcessorId()
                 .AddMotherboardSerialNumber()
-                .AddSystemUuid())
+                .AddSystemUuid()
+                )
+            #elif Linux
             .OnLinux(linux => linux
-                .AddCpuInfo()
-                .AddMotherboardSerialNumber()
-                .AddProductUuid())
+                // .AddCpuInfo()        // sentiasa berubah2
+                .AddMotherboardSerialNumber()    // perlu root
+                // .AddProductUuid()    // perlu root
+                .AddMachineId()
+                )
+            #endif
             ;
         string deviceId = deviceIdBuilder.UseFormatter(stringFormatter).ToString();
         Guid guid = new(deviceIdBuilder.UseFormatter(guidFormatter).ToString());
@@ -80,7 +86,7 @@ public class LesenManager
         return (guid, deviceId);
     }
 
-    public void SaveKeyPair(string folder = null, string passPhrase = "Ini lesen yang ku mahu")
+    public void SaveKeyPair(string folder = "", string passPhrase = "Ini lesen yang ku mahu")
     {
         string privateKeyFilename = "private.key";
         string publicKeyFilename = "public.key";
